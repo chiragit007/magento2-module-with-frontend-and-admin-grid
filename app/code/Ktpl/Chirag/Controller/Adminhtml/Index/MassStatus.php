@@ -13,16 +13,18 @@ class MassStatus extends \Magento\Backend\App\Action
      */
     public function execute()
     {
-        $empIds = $this->getRequest()->getParam('ktpl_chirag');
+        $empIds = $this->getRequest()->getParam('ktpl_emp');
         if (!is_array($empIds) || empty($empIds)) {
             $this->messageManager->addError(__('Please select Employee.'));
         } else {
             try {
-                $status = (int) $this->getRequest()->getParam('status');
-                foreach ($empIds as $empId) {
-                    $emp = $this->_objectManager->get('Ktpl\Chirag\Model\Employee')->load($empIds);
-                    $emp->setIsActive($status)->save();
+                $status = $this->getRequest()->getParam('status');
+                foreach ($empIds as $empId) 
+                {
+                    $emp = $this->_objectManager->get('Ktpl\Chirag\Model\Employee')->load($empId);
+                    $emp->setData('is_active',$status)->save();
                 }
+                
                 $this->messageManager->addSuccess(
                     __('A total of %1 record(s) have been updated.', count($empIds))
                 );
