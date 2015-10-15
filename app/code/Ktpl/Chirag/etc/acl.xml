@@ -10,7 +10,6 @@
         <resources>
             <resource id="Magento_Backend::admin">
                 <resource id="Ktpl_Chirag::chirag" title="Custom Grid Chirag" sortOrder="40">
-                    <!-- <resource id="Training5_VendorApi::vendor" title="All Vendors" sortOrder="10" /> -->
                 </resource>                
             </resource>
         </resources>
